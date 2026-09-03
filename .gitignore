@@ -1,0 +1,28 @@
+## .NET / Visual Studio build artifacts
+bin/
+obj/
+*.user
+*.suo
+.vs/
+*.userprefs
+*.lock.json.fragments
+
+## Visual Studio Code
+.vscode/
+
+## NuGet
+*.nupkg
+*.snupkg
+**/[Pp]ackages/*
+!**/[Pp]ackages/build/
+
+## Test results / coverage
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+coverage*.json
+coverage*.xml
+coverage*.info
+
+## Misc
+*.swp
+.DS_Store
