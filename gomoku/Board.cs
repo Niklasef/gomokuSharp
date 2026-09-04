@@ -9,7 +9,7 @@ public readonly record struct Board
     internal Board(Tile[,] tiles) => Tiles = tiles;
 }
 
-public static class BoardUtils
+public static class Boards
 {
     public static Board Create() => new(new Tile[Board.Size, Board.Size]);
 
@@ -35,7 +35,7 @@ public static class BoardUtils
                 $"Coordinates ({x}, {y}) are outside the 0..{Board.Size - 1} range.");
         }
 
-        if (!TileUtils.IsEmpty(board.Tiles[x, y]))
+        if (!Tiles.IsEmpty(board.Tiles[x, y]))
         {
             throw new InvalidOperationException($"Tile ({x}, {y}) is already occupied.");
         }
@@ -51,12 +51,12 @@ public static class BoardUtils
                 $"Coordinates ({x}, {y}) are outside the 0..{Board.Size - 1} range.");
         }
 
-        if (TileUtils.IsEmpty(board.Tiles[x, y]))
+        if (Tiles.IsEmpty(board.Tiles[x, y]))
         {
             throw new InvalidOperationException($"Tile ({x}, {y}) is already empty.");
         }
 
-        return WithTile(board, x, y, TileUtils.Empty());
+        return WithTile(board, x, y, Tiles.Empty());
     }
 
     private static Board WithTile(Board board, int x, int y, Tile tile)
