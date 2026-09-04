@@ -1,0 +1,11 @@
+#!/bin/sh
+set -eu
+
+staged=$(git diff --cached --name-only --diff-filter=ACMR)
+
+if [ -z "$staged" ] || ! printf '%s\n' "$staged" | grep -qE '\.(cs|csproj|sln|editorconfig)$'; then
+  exit 0
+fi
+
+dotnet format --verify-no-changes --severity warn
+dotnet build -nologo
