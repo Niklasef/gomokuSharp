@@ -3,7 +3,7 @@ namespace Gomoku;
 public readonly record struct Tile {
     public Stone? Stone { get; }
 
-    public Tile(Stone? stone = null) => Stone = stone;
+    internal Tile(Stone? stone = null) => Stone = stone;
 }
 
 public static class Tiles {
