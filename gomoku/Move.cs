@@ -5,11 +5,7 @@ public readonly record struct Move {
     public int X { get; }
     public int Y { get; }
 
-    public Move(Stone stone, int x, int y) {
-        Stone = stone;
-        X = x;
-        Y = y;
-    }
+    internal Move(Stone stone, int x, int y) => (Stone, X, Y) = (stone, x, y);
 }
 
 public static class Moves {

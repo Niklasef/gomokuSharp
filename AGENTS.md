@@ -9,6 +9,7 @@ Make small, focused changes. Do not modify unrelated code.
 - All functions and computed properties go in the matching static class (e.g. `Tiles.IsEmpty(tile)`, `Tiles.Empty()`).
 - Data types are totally immutable: no settable properties, no mutable fields.
 - Never mutate in place. Utility functions create and return new instances with the change applied (copy-on-write).
+- Data types have `internal` (or `private`) constructors; instances are created only through the matching utility's factory (e.g. `Moves.Create`). Struct `default` still exists — keep `IsValid`-style guards.
 - Prefer `readonly record struct` for data types — the best fit most of the time.
 
 ## Git Hooks
