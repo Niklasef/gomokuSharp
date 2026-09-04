@@ -11,3 +11,23 @@ public readonly record struct Move {
         Y = y;
     }
 }
+
+public static class Moves {
+    public static bool IsValid(Game game, Move move) =>
+        move.Stone == game.Turn
+        && Boards.IsInBounds(move.X, move.Y)
+        && Tiles.IsEmpty(Boards.GetTile(game.Board, move.X, move.Y));
+
+    public static Move Create(Game game, int x, int y) {
+        if (!Boards.IsInBounds(x, y)) {
+            throw new ArgumentOutOfRangeException(nameof(x),
+                $"Coordinates ({x}, {y}) are outside the 0..{Board.Size - 1} range.");
+        }
+
+        if (!Tiles.IsEmpty(Boards.GetTile(game.Board, x, y))) {
+            throw new InvalidOperationException($"Tile ({x}, {y}) is already occupied.");
+        }
+
+        return new Move(game.Turn, x, y);
+    }
+}
